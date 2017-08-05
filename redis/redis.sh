@@ -30,9 +30,10 @@ REDISIMAGE="redis:alpine"
 REDISDATA="/data/redis/data"
 
 
-update_images() {
+update() {
   docker pull ${REDISIMAGE}
-  check_exec_success "$?" "pulling 'redis' image"
+
+  check_exec_success "$?" "pulling newer redis image"
 }
 
 
@@ -54,11 +55,15 @@ start() {
 stop() {
   docker stop redis 2>/dev/null
   docker rm -v redis 2>/dev/null
+
+  check_exec_success "$?" "stop redis container"
 }
 
 destroy() {
-  stop
+  stop &>/dev/null
   rm -rf ${REDISDATA}
+
+  check_exec_success "$?" "delete redis data"
 }
 
 
@@ -73,6 +78,7 @@ shift
 case "$Action" in
   start)   start    ;;
   stop )   stop     ;;
+  update ) update   ;;
   destroy) destroy  ;;
   *)
     echo "Usage: start | stop | destroy";;
