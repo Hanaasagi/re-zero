@@ -81,7 +81,7 @@ case "$Action" in
   update ) update   ;;
   destroy) destroy  ;;
   *)
-    echo "Usage: start | stop | destroy";;
+    echo "Usage: start | stop | update | destroy";;
 esac
 
 exit 0
