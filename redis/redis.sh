@@ -42,10 +42,10 @@ start() {
   docker rm -v redis 2>/dev/null
 
   docker run -d --name redis \
-    -v ${REDISDATA}:/data \
-    --net=host \
-    --log-opt max-size=10m \
-    --log-opt max-file=9 \
+    -v ${REDISDATA}:/data    \
+    -p 127.0.0.1:6379:6379   \
+    --log-opt max-size=10m   \
+    --log-opt max-file=9     \
     ${REDISIMAGE}
 
   check_exec_success "$?" "start redis container"
@@ -53,14 +53,23 @@ start() {
 
 
 stop() {
-  docker stop redis 2>/dev/null
+  docker stop  redis 2>/dev/null
   docker rm -v redis 2>/dev/null
 
   check_exec_success "$?" "stop redis container"
 }
 
-destroy() {
-  stop &>/dev/null
+
+cli() {
+  docker run -it --rm        \
+    --link redis:redis       \
+    --name redis-cli         \
+    ${REDISIMAGE}            \
+    redis-cli -h redis
+}
+
+
+clean() {
   rm -rf ${REDISDATA}
 
   check_exec_success "$?" "delete redis data"
@@ -76,12 +85,13 @@ Action=$1
 shift
 
 case "$Action" in
-  start)   start    ;;
-  stop )   stop     ;;
-  update ) update   ;;
-  destroy) destroy  ;;
+  start   ) start    ;;
+  stop    ) stop     ;;
+  cli     ) cli      ;;
+  update  ) update   ;;
+  clean   ) clean    ;;
   *)
-    echo "Usage: start | stop | update | destroy";;
+    echo "Usage: start | stop | cli | update | clean";;
 esac
 
 exit 0
