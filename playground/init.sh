@@ -16,7 +16,7 @@ apt-get install -y      \
 # Install Docker
 ##################
 
-apt-get install                         \
+apt-get install -y                      \
      apt-transport-https                \
      ca-certificates                    \
      gnupg2                             \
@@ -30,7 +30,7 @@ add-apt-repository                                                              
    stable"
 
 apt-get update
-apt-get install docker-ce
+apt-get install -y docker-ce
 
 
 ##################
