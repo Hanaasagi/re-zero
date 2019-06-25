@@ -4,10 +4,10 @@ ZSH_THEME="sagiri"
 
 plugins=(
   git
-  zsh-autosuggestions
-  zsh-syntax-highlighting
   vi-mode
   history-substring-search  # see https://github.com/robbyrussell/oh-my-zsh/issues/800
+  zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 
 bindkey -M vicmd 'k' history-substring-search-up
