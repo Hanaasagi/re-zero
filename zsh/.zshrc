@@ -28,3 +28,5 @@ alias tmux="tmux -2"
 # yaogurt
 export VISUAL="vim"
 export GPG_TTY=$(tty)
+
+
