@@ -1,0 +1,32 @@
+patch:
+  app_options:
+    com.googlecode.iterm2:
+      ascii_mode: false
+      no_inline: false
+
+  show_notifications_when: appropriate
+
+  style/color_scheme: sakura_nagashi
+
+  # https://gjrobert.github.io/Rime-See-Me-squirrel/
+  preset_color_schemes:
+    sakura_nagashi:
+      name: 桜流し
+      author: Hanaasagi
+      text_color: 0xFFFFFF
+      back_color: 0xB49FDC
+      hilited_candidate_back_color: 0xDDA851
+      hilited_candidate_text_color: 0xFFFFFF
+      candidate_text_color: 0xFFFFFF
+      comment_text_color: 0x000000
+      candidate_format: "%c\u2005%@\u2005"
+      horizontal: true
+      inline_preedit: true
+      corner_radius: 8
+      border_height: 0
+      border_width: 0
+      font_face: "Sarasa Mono SC"
+      label_font_face: "Helvetica"
+      font_point: 16
+      label_font_point: 16
+      line_spacing: 6
