@@ -1,0 +1,15 @@
+Vagrant.configure("2") do |config|
+  config.vm.box = "debian/buster64"
+  config.vm.hostname = "sapphire"
+  config.vm.network :public_network
+  config.disksize.size = '128GB'
+
+  config.vm.provider "virtualbox" do |v|
+    v.name = "develop"
+    v.memory = 4096
+    v.cpus = 4
+  end
+  # config.vm.synced_folder "./share", "/vagrant", create: true, owner: "root", group: "root", mount_options: ["dmode=755","fmode=644"], type: "rsync"
+  config.vm.synced_folder "./share", "/opt", type: "sshfs"
+
+end
