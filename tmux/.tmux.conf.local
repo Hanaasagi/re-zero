@@ -344,11 +344,11 @@ set -g mode-keys vi
 
 # replace C-b by C-a instead of using both prefixes
 # set -gu prefix2
-# unbind C-a
-# unbind C-b
- set -g prefix C-']'
- bind C-']' send-prefix
- set -g default-terminal "xterm-256color"
+unbind C-a
+unbind C-b
+set -g prefix C-']'
+bind C-']' send-prefix
+set -g default-terminal "xterm-256color"
 
 # move status line to top
 # set -g status-position top
