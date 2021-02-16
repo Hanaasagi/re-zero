@@ -233,6 +233,8 @@ tmux_conf_theme_right_separator_sub="|"
 tmux_conf_theme_status_left=" 💻load avg: #{loadavg} "
 tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} | ⏰ %H:%M:%S %Y-%m-%d "
 set-option -g status-justify centre
+set -g status-interval 2
+
 
 # status left style
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6"
