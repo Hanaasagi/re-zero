@@ -1,0 +1,19 @@
+[core]
+	editor = vim
+	quotepath = false
+    # pager = diff-so-fancy | less --tabs=4 -RFX
+[user]
+	name = Hanaasagi
+	email = ambiguous404@gmail.com
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[i18n "commit"]
+	encoding = utf-8
+[i18n]
+	logoutputencoding = utf-8
+[gui]
+	encoding = utf-8
+[diff-so-fancy]
+	markEmptyLines = false
+[pull]
+	rebase = false
