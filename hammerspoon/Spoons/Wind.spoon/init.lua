@@ -53,18 +53,17 @@ function obj:showStatus()
             textAlignment = "center"
         })
 
-        local mainScreen = screen.mainScreen()
-        local mainRes = mainScreen:fullFrame()
-        statusInfo:frame({
-            x = (mainRes.w - 512) / 2,
-            y = (mainRes.h - 256) / 2,
-            w = 512,
-            h = 256
-        })
-
         self.statusInfo = statusInfo
     end
 
+    local mainScreen = screen.mainScreen()
+    local mainRes = mainScreen:fullFrame()
+    statusInfo:frame({
+        x = (mainRes.w - 512) / 2,
+        y = (mainRes.h - 256) / 2,
+        w = 512,
+        h = 256
+    })
     self.statusInfo:show()
 end
 
