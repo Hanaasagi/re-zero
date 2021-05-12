@@ -75,7 +75,8 @@ plugins=(
   vi-mode
   history-substring-search  # see https://github.com/robbyrussell/oh-my-zsh/issues/800
   zsh-autosuggestions
-  zsh-syntax-highlighting
+  #zsh-syntax-highlighting
+  fast-syntax-highlighting
   kubetail
 )
 
