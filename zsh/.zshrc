@@ -164,6 +164,9 @@ alias kns="kubens"
 alias kui="docker run --rm -it -v ~/.kube/config:/root/.kube/config quay.io/derailed/k9s"
 alias tmux='tmux -2'
 
+# http traffic capture
+alias httpdump='httpdump(){tcpdump -nnvXS -A -i $1 -s 0 "tcp port $2 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)" };httpdump'
+
 # auto completion
 source <(kubectl completion zsh)
 complete -F __start_kubectl k
