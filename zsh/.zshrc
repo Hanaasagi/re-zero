@@ -164,5 +164,9 @@ alias kns="kubens"
 alias kui="docker run --rm -it -v ~/.kube/config:/root/.kube/config quay.io/derailed/k9s"
 alias tmux='tmux -2'
 
+# auto completion
+source <(kubectl completion zsh)
+complete -F __start_kubectl k
+
 eval `ssh-agent -s`
 ssh-add ~/.ssh/id_rsa
