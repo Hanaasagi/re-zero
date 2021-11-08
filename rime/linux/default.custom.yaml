@@ -1,0 +1,37 @@
+patch:
+  menu:
+    page_size: 8
+  schema_list:
+  - schema: luna_pinyin_simp
+  ascii_composer:
+    good_old_caps_lock: true
+    switch_key:
+      Caps_Lock: commit_code
+      Control_L: noop
+      Control_R: noop
+      Shift_L: commit_code
+      Shift_R: noop
+  # https://github.com/rime/rime-prelude/blob/master/key_bindings.yaml
+  key_binder:
+    bindings:
+      - accept: "Control+c"
+        send: "Escape"
+        when: "has_menu"
+      - accept: "Control+p"
+        send: "Page_Up"
+        when: "has_menu"
+      - accept: "Control+n"
+        send: "Page_Down"
+        when: "has_menu"
+      - accept: "Control+j"
+        send: "Down"
+        when: "has_menu"
+      - accept: "Control+k"
+        send: "Up"
+        when: "has_menu"
+      - accept: "Tab"
+        send: "Down"
+        when: "has_menu"
+      - accept: "Control+h"
+        send: "BackSpace"
+        when: "composing"

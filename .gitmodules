@@ -1,0 +1,3 @@
+[submodule "rime/linux/fcitx5-nord"]
+	path = rime/linux/fcitx5-nord
+	url = https://github.com/tonyfettes/fcitx5-nord.git
