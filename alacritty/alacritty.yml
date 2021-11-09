@@ -802,6 +802,7 @@ key_bindings:
   # - { key: LBracket,          mods: Command,                    action: ToggleViMode}
   - { key: LBracket,          mods: Command,                      chars: "\x1d\x5b"}
   - { key: Apostrophe,        mods: Command,                      chars: "\x1d\x22"}
+  - { key: Apostrophe,        mods: Command,                      chars: "\x1d\x25"}
   - { key: S,                 mods: Command,                      chars: "\x1d\x25"}
   - { key: J,                 mods: Command,                      chars: "\x1d\x6a"}
   - { key: K,                 mods: Command,                      chars: "\x1d\x6b"}
