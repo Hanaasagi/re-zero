@@ -1,0 +1,87 @@
+#!/bin/bash
+
+# ##############################################################################
+# #                                  Config
+# ##############################################################################
+
+WALLPAPER_PATH="$HOME/Downloads/93595847_p0.png"
+
+# ##############################################################################
+# #                                  ENV VARS                                  #
+# ##############################################################################
+
+export BROWSER=firefox-nightly
+
+# ##############################################################################
+# #                                AUTOSTART APPS                              #
+# ##############################################################################
+
+# start sxhkd
+pgrep -x sxhkd > /dev/null || sxhkd &
+# no capslock, switch to ctrl
+setxkbmap -option ctrl:nocaps
+# start dunst
+kill $(pidof dunst) && dunst --startup_notification true --config $HOME/.config/dunst/dunstrc &
+# start picom, it will autoreload config file, so it don't need to stop
+picom --experimental-backends --config $HOME/.config/picom/picom.conf &
+# start polybar
+sh $HOME/.config/polybar/launch.sh
+# start fcitx
+fcitx5-remote -r
+# auto lock screen
+xautolock -time 10 -locker 'lock' -corners ---- -cornersize 30 &
+# set wallpaper
+hsetroot -fill $WALLPAPER_PATH
+
+# ##############################################################################
+# #                                 WINDOW RULES                               #
+# ##############################################################################
+
+bspc rule -a FirefoxNightly                 desktop=^1 state=fullscreen
+bspc rule -a Code                           desktop=^5 state=fullscreen
+bspc rule -a TelegramDesktop                desktop=^7 state=tiled
+
+# ##############################################################################
+# #                            GENERAL CONFIGURATION                           #
+# ##############################################################################
+
+bspc monitor -d I II III IV V VI VII
+
+# pointer_modifier
+#     Keyboard modifier used for moving or resizing windows. Accept the following values: shift, control, lock, mod1, mod2,
+#     mod3, mod4, mod5.
+bspc config pointer_modifier             Mod4  # Super(Win)
+
+# window border width
+bspc config border_width                 10
+# Size of the gap that separates windows.
+bspc config window_gap                   15
+
+# Padding space added at the sides of the monitor or desktop.
+bspc config top_padding                  40
+bspc config bottom_padding               0
+
+bspc config split_ratio                  0.62
+bspc config borderless_monocle           true
+bspc config gapless_monocle              true
+
+outer='0x1d2021'   # outer
+inner1='0x32302f'  # focused
+inner2='0x282828'  # normal
+
+targets() {
+     case $1 in
+        focused) bspc query -N -n .local.focused.\!fullscreen;;
+        normal)  bspc query -N -n .local.\!focused.\!fullscreen
+    esac | grep -iv "$v"
+}
+
+draw() { chwb2 -I "$inner" -O "$outer" -i "4" -o "9" $* |:; }
+
+# initial draw, and then subscribe to events
+{ echo; bspc subscribe node_geometry node_focus; } |
+     while read -r _; do
+        [ "$v" ] || v='abcdefg'
+        inner=$inner1 draw "$(targets focused)"
+        inner=$inner2 draw "$(targets normal)"
+    done
