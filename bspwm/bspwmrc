@@ -11,6 +11,9 @@ WALLPAPER_PATH="$HOME/Downloads/93595847_p0.png"
 # ##############################################################################
 
 export BROWSER=firefox-nightly
+export MONITOR=$(xrandr -q | grep primary | cut -d' ' -f1)
+export MONITORS=( $(xrandr -q | grep ' connected' | cut -d' ' -f1) )
+
 
 # ##############################################################################
 # #                                AUTOSTART APPS                              #
@@ -45,7 +48,8 @@ bspc rule -a TelegramDesktop                desktop=^7 state=tiled
 # #                            GENERAL CONFIGURATION                           #
 # ##############################################################################
 
-bspc monitor -d I II III IV V VI VII
+MONITOR=${MONITOR:-${MONITORS[0]}}
+bspc monitor $MONITOR -d I II III IV V VI VII
 
 # pointer_modifier
 #     Keyboard modifier used for moving or resizing windows. Accept the following values: shift, control, lock, mod1, mod2,
