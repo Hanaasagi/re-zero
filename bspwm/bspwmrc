@@ -4,7 +4,7 @@
 # #                                  Config
 # ##############################################################################
 
-WALLPAPER_PATH="$HOME/Downloads/93595847_p0.png"
+WALLPAPER_PATH="$HOME/Pictures/Wallpapers/wallpaper.jpg"
 
 # ##############################################################################
 # #                                  ENV VARS                                  #
@@ -13,7 +13,6 @@ WALLPAPER_PATH="$HOME/Downloads/93595847_p0.png"
 export BROWSER=firefox-nightly
 export MONITOR=$(xrandr -q | grep primary | cut -d' ' -f1)
 export MONITORS=( $(xrandr -q | grep ' connected' | cut -d' ' -f1) )
-
 
 # ##############################################################################
 # #                                AUTOSTART APPS                              #
@@ -69,23 +68,9 @@ bspc config split_ratio                  0.62
 bspc config borderless_monocle           true
 bspc config gapless_monocle              true
 
-outer='0x1d2021'   # outer
-inner1='0x32302f'  # focused
-inner2='0x282828'  # normal
-
-targets() {
-     case $1 in
-        focused) bspc query -N -n .local.focused.\!fullscreen;;
-        normal)  bspc query -N -n .local.\!focused.\!fullscreen
-    esac | grep -iv "$v"
-}
-
-draw() { chwb2 -I "$inner" -O "$outer" -i "4" -o "9" $* |:; }
-
-# initial draw, and then subscribe to events
-{ echo; bspc subscribe node_geometry node_focus; } |
+# change focus window border color
+{ echo; bspc subscribe node_focus; } |
      while read -r _; do
-        [ "$v" ] || v='abcdefg'
-        inner=$inner1 draw "$(targets focused)"
-        inner=$inner2 draw "$(targets normal)"
-    done
+        sleep 0.05
+        chwb -c CC6464 $(pfw)
+     done
