@@ -72,6 +72,10 @@ super + m
 alt + space
     sh $HOME/.config/rofi/appmenu.sh
 
+# Open rofi powermenu
+super + p
+    sh $HOME/.config/rofi/powermenu.sh
+
 # screenshot
 alt + shift + 4
     flameshot gui
