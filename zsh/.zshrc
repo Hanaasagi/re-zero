@@ -173,3 +173,5 @@ complete -F __start_kubectl k
 
 eval `ssh-agent -s`
 ssh-add ~/.ssh/id_rsa
+
+eval "$(starship init zsh)"
