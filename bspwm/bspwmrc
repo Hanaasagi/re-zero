@@ -38,6 +38,8 @@ fcitx5-remote -r
 xautolock -time 10 -locker 'lock' -corners ---- -cornersize 30 &
 # set wallpaper
 hsetroot -fill $WALLPAPER_PATH
+# battery checker
+sh $HOME/.local/bin/check-battery.sh &
 
 # ##############################################################################
 # #                                 WINDOW RULES                               #
