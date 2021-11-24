@@ -7,10 +7,6 @@
 
 rofi_command="rofi -theme $HOME/.config/rofi/styles/powermenu.rasi"
 
-uptime=$(uptime -p | sed -e 's/up //g')
-cpu=$($HOME/.config/rofi/bin/usedcpu)
-memory=$($HOME/.config/rofi/bin/usedram)
-
 # Options
 shutdown=""
 reboot=""
@@ -35,7 +31,7 @@ msg() {
 # Variable passed to rofi
 options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
 
-chosen="$(echo -e "$options" | $rofi_command -p "祥  $uptime  |     $cpu  |  ﬙  $memory " -dmenu -selected-row 2)"
+chosen="$(echo -e "$options" | $rofi_command -dmenu -selected-row 2)"
 case $chosen in
     $shutdown)
 		ans=$(confirm_exit &)
