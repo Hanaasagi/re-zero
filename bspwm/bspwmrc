@@ -23,7 +23,11 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 # no capslock, switch to ctrl
 setxkbmap -option ctrl:nocaps
 # start dunst
-kill $(pidof dunst) && dunst --startup_notification true --config $HOME/.config/dunst/dunstrc &
+if pgrep -x dunst > /dev/null
+then
+    kill $(pidof dunst)
+fi
+dunst --startup_notification true --config $HOME/.config/dunst/dunstrc &
 # start picom, it will autoreload config file, so it don't need to stop
 picom --experimental-backends --config $HOME/.config/picom/picom.conf &
 # start polybar
