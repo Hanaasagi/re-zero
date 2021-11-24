@@ -40,6 +40,15 @@ xautolock -time 10 -locker 'lock' -corners ---- -cornersize 30 &
 hsetroot -fill $WALLPAPER_PATH
 # battery checker
 sh $HOME/.local/bin/check-battery.sh &
+# start redshift
+if pgrep -x redshift > /dev/null
+then
+    pid=$(pidof redshift)
+    kill $pid
+    # we need to wait redshift shutdown, otherwise color temperature is wrong.
+    while kill -0 $pid 2>/dev/null; do sleep 0.01; done
+fi
+redshift &
 
 # ##############################################################################
 # #                                 WINDOW RULES                               #
