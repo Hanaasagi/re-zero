@@ -13,6 +13,7 @@ WALLPAPER_PATH="$HOME/Pictures/Wallpapers/wallpaper.jpg"
 export BROWSER=firefox-nightly
 export MONITOR=$(xrandr -q | grep primary | cut -d' ' -f1)
 export MONITORS=( $(xrandr -q | grep ' connected' | cut -d' ' -f1) )
+export QT_STYLE_OVERRIDE=kvantum
 
 # ##############################################################################
 # #                                AUTOSTART APPS                              #
