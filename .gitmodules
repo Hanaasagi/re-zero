@@ -4,3 +4,6 @@
 [submodule "conky/lean-conky-config"]
 	path = conky/lean-conky-config
 	url = git@github.com:jxai/lean-conky-config.git
+[submodule "grub2-themes"]
+	path = grub2-themes
+	url = git@github.com:vinceliuice/grub2-themes.git
