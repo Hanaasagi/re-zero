@@ -1,3 +1,6 @@
 [submodule "sddm/sddm-sugar-candy"]
 	path = sddm/sddm-sugar-candy
 	url = https://framagit.org/MarianArlt/sddm-sugar-candy.git
+[submodule "conky/lean-conky-config"]
+	path = conky/lean-conky-config
+	url = git@github.com:jxai/lean-conky-config.git

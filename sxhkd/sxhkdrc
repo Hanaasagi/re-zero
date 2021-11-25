@@ -73,8 +73,12 @@ alt + space
     sh $HOME/.config/rofi/appmenu.sh
 
 # Open rofi powermenu
-super + p
+super + shift + p
     sh $HOME/.config/rofi/powermenu.sh
+
+# Toggle conky sidebar
+super + p
+    sh $HOME/.local/bin/toggle-sidebar.sh
 
 # screenshot
 alt + shift + 4
