@@ -21,6 +21,13 @@
 ![](.screenshots/terminal.png)
 
 
+### TUI FileManager
+
+- Ranger with dracula theme and file preview
+
+![](.screenshots/ranger.png)
+
+archlinux  tlp
 ### Welcome Page
 
 - sddm
