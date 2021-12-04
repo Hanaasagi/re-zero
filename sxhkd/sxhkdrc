@@ -1,5 +1,5 @@
 # Quit and restart bspwm
-super + alt + {q,shift + }r
+super + alt + {q,shift + r}
     bspc {quit,wm -r}
 
 # make sxhkd reload its configuration files:
@@ -58,7 +58,7 @@ ctrl + alt + q
 
 # Start alacritty
 super + Return
-    alacritty -t "term"
+    alacritty
 
 # Open Broswer
 super + b
@@ -72,6 +72,10 @@ super + m
 alt + space
     sh $HOME/.config/rofi/appmenu.sh
 
+# screenshot
+alt + shift + 4
+    flameshot gui
+
 # Open rofi powermenu
 super + shift + p
     sh $HOME/.config/rofi/powermenu.sh
@@ -80,6 +84,6 @@ super + shift + p
 super + p
     sh $HOME/.local/bin/toggle-sidebar.sh
 
-# screenshot
-alt + shift + 4
-    flameshot gui
+# Open rofi bitwarden menu
+alt + p
+    sh $HOME/.config/rofi/bwmenu.sh
