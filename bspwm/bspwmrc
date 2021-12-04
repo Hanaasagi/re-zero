@@ -23,6 +23,8 @@ export QT_STYLE_OVERRIDE=kvantum
 pgrep -x sxhkd > /dev/null || sxhkd &
 # no capslock, switch to ctrl
 setxkbmap -option ctrl:nocaps
+# turn off bell
+xset -b
 # start dunst
 if pgrep -x dunst > /dev/null
 then
