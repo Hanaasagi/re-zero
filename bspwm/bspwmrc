@@ -54,6 +54,7 @@ then
     while kill -0 $pid 2>/dev/null; do sleep 0.01; done
 fi
 redshift &
+latte-dock &
 
 # ##############################################################################
 # #                                 WINDOW RULES                               #
@@ -62,6 +63,7 @@ redshift &
 bspc rule -a FirefoxNightly                 desktop=^1 state=fullscreen
 bspc rule -a Code                           desktop=^5 state=fullscreen
 bspc rule -a TelegramDesktop                desktop=^7 state=tiled
+bspc rule -a latte-dock                     sticky=on manage=off
 
 # ##############################################################################
 # #                            GENERAL CONFIGURATION                           #
