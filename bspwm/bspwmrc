@@ -63,6 +63,7 @@ latte-dock &
 bspc rule -a FirefoxNightly                 desktop=^1 state=fullscreen
 bspc rule -a Code                           desktop=^5 state=fullscreen
 bspc rule -a TelegramDesktop                desktop=^7 state=tiled
+bspc rule -a Conky                          sticky=on manage=off lower=on
 bspc rule -a latte-dock                     sticky=on manage=off
 
 # ##############################################################################
