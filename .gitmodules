@@ -7,3 +7,6 @@
 [submodule "grub2-themes"]
 	path = grub2-themes
 	url = git@github.com:vinceliuice/grub2-themes.git
+[submodule "rime/linux/fcitx5-nord"]
+	path = rime/linux/fcitx5-nord
+	url = git@github.com:tonyfettes/fcitx5-nord.git
