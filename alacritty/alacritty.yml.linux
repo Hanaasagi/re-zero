@@ -820,6 +820,7 @@ key_bindings:
   - { key: X,                 mods: Alt,                      chars: "\x1d\x78"}
   - { key: Z,                 mods: Alt,                      chars: "\x1d\x7a"}
   - { key: N,                 mods: Alt,                      chars: "\x1d\x71"}
+  - { key: E,                 mods: Alt,                      chars: "\x1d\x66"}
   - { key: Semicolon,         mods: Alt|Shift,                chars: "\x1d\x3a"}
   - { key: Key1,              mods: Alt,                      chars: "\x1d\x31"}
   - { key: Key2,              mods: Alt,                      chars: "\x1d\x32"}
