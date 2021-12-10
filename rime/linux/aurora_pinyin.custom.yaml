@@ -1,0 +1,3 @@
+
+patch:
+  "translator/dictionary": extended #词典名字可自定义,与下方文件名保持一致即可

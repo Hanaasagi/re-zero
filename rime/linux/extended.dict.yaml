@@ -1,0 +1,11 @@
+---
+name: extended
+version: "2021.12.09"
+sort: by_weight
+use_preset_vocabulary: true  #是否启用默认的“八股文”词库及词频系统,如需启用请设为 true 。
+import_tables:
+  # - luna_pinyin
+  - aurora_pinyin
+  - zhwiki
+  - moegirl
+  - sogou
