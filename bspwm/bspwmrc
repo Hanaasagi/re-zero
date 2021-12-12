@@ -54,17 +54,26 @@ then
     while kill -0 $pid 2>/dev/null; do sleep 0.01; done
 fi
 redshift &
-latte-dock &
+
+# ActivityWatch Family
+aw-server &
+aw-watcher-afk &
+aw-watcher-window &
+
+# latte-dock &
 
 # ##############################################################################
 # #                                 WINDOW RULES                               #
 # ##############################################################################
 
-bspc rule -a FirefoxNightly                 desktop=^1 state=fullscreen
+bspc rule -a Nightly                        desktop=^1 state=tiled
 bspc rule -a Code                           desktop=^5 state=fullscreen
+bspc rule -a Mailspring                     desktop=^7 state=tiled
 bspc rule -a TelegramDesktop                desktop=^7 state=tiled
 bspc rule -a Conky                          sticky=on manage=off lower=on
 bspc rule -a latte-dock                     sticky=on manage=off
+
+bspc desktop ^7 -l monocle
 
 # ##############################################################################
 # #                            GENERAL CONFIGURATION                           #
