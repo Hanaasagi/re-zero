@@ -87,3 +87,6 @@ super + p
 # Open rofi bitwarden menu
 alt + p
     sh $HOME/.config/rofi/bwmenu.sh
+
+super + q
+    sh $HOME/.config/rofi/clipboard.sh
