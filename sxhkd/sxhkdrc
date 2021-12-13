@@ -19,12 +19,12 @@ super + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
 # close and kill
-super + {_,shift + }w
+super + {_,shift + }q
 	bspc node -{c,k}
 
 # Move to or send window to workspace #
-super + {_,shift + }{1-6}
-	bspc {desktop -f,node -d} '^{1-6}'
+super + {_,shift + }{1-9}
+	bspc {desktop -f,node -d} '^{1-9}'
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
@@ -84,9 +84,12 @@ super + shift + p
 super + p
     sh $HOME/.local/bin/toggle-sidebar.sh
 
-# Open rofi bitwarden menu
+# Open rofi powermenu
 alt + p
     sh $HOME/.config/rofi/bwmenu.sh
 
-super + q
+super + w
+    sh $HOME/.config/rofi/windowmenu.sh
+
+super + c
     sh $HOME/.config/rofi/clipboard.sh
