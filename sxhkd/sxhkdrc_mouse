@@ -1,0 +1,12 @@
+####################################
+#   Mouse Config
+####################################
+
+super + {h,j,k,l}
+	sh $HOME/.config/rofi/move.sh {move_left, move_down, move_up, move_right}
+
+super + alt + Return
+    xdotool click 1
+
+super + shift + Return
+    xdotool click 2
