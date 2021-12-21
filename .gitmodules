@@ -10,3 +10,6 @@
 [submodule "rime/linux/fcitx5-nord"]
 	path = rime/linux/fcitx5-nord
 	url = git@github.com:tonyfettes/fcitx5-nord.git
+[submodule "sextans"]
+	path = sextans
+	url = https://github.com/Hanaasagi/sextans
