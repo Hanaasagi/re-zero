@@ -20,6 +20,10 @@
 
 ![](.screenshots/terminal.png)
 
+### Dashboard
+
+![](.screenshots/dashboard.gif)
+
 
 ### TUI FileManager
 
@@ -27,7 +31,6 @@
 
 ![](.screenshots/ranger.png)
 
-archlinux  tlp
 ### Welcome Page
 
 - sddm
