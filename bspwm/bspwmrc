@@ -1,10 +1,16 @@
 #!/bin/bash
 
 # ##############################################################################
+# #                                  Monitor
+# ##############################################################################
+
+sh $HOME/.screenlayout/HDMI.sh
+
+# ##############################################################################
 # #                                  Config
 # ##############################################################################
 
-WALLPAPER_PATH="$HOME/Pictures/Wallpapers/wallpaper.jpg"
+WALLPAPER_PATH="$HOME/Pictures/Wallpapers/wallpaper.png"
 
 # ##############################################################################
 # #                                  ENV VARS                                  #
@@ -12,7 +18,7 @@ WALLPAPER_PATH="$HOME/Pictures/Wallpapers/wallpaper.jpg"
 
 export BROWSER=firefox-nightly
 export MONITOR=$(xrandr -q | grep primary | cut -d' ' -f1)
-export MONITORS=( $(xrandr -q | grep ' connected' | cut -d' ' -f1) )
+export MONITORS=( $(xrandr -q | grep ' connected' | cut -d' ' -f1 | sort -r) )
 export QT_STYLE_OVERRIDE=kvantum
 
 # ##############################################################################
@@ -20,7 +26,7 @@ export QT_STYLE_OVERRIDE=kvantum
 # ##############################################################################
 
 # start sxhkd
-pgrep -x sxhkd > /dev/null || sxhkd &
+# sh $HOME/.config/sxhkd/multi_mode_sxhkd.sh start &
 # no capslock, switch to ctrl
 setxkbmap -option ctrl:nocaps
 # turn off bell
@@ -38,9 +44,10 @@ sh $HOME/.config/polybar/launch.sh
 # start fcitx
 fcitx5-remote -r
 # auto lock screen
-xautolock -time 10 -locker 'lock' -corners ---- -cornersize 30 &
+#xautolock -time 10 -locker 'lock' -corners ---- -cornersize 30 &
+xautolock -time 10 -locker 'systemctl suspend' -corners ---- -cornersize 30 &
 # set wallpaper
-hsetroot -fill $WALLPAPER_PATH
+hsetroot -cover $WALLPAPER_PATH
 # battery checker
 sh $HOME/.local/bin/check-battery.sh &
 # start conky
@@ -60,18 +67,39 @@ aw-server &
 aw-watcher-afk &
 aw-watcher-window &
 
+# clipboard manager
+greenclip daemon > /dev/null 2>&1 &
+
+# Force keyborad
+# xinput set-prop $(xinput list  | grep Touchpad | grep -Eo "id=[0-9]{1,4}" | cut -d '=' -f 2) "Device Enabled" 0
+# xinput set-prop $(xinput list  | grep Mouse | grep -Eo "id=[0-9]{1,4}" | cut -d '=' -f 2) "Device Enabled" 0
+
+if pgrep -x unclutter > /dev/null
+then
+    pid=$(pidof unclutter)
+    kill $pid
+    while kill -0 $pid 2>/dev/null; do sleep 0.01; done
+fi
+unclutter -idle 10 &
+
 # latte-dock &
+#bspc rule -a dropdown sticky=on state=floating hidden=on
+#alacritty --class dropdown -e "zsh" &
 
 # ##############################################################################
 # #                                 WINDOW RULES                               #
 # ##############################################################################
 
 bspc rule -a Nightly                        desktop=^1 state=tiled
-bspc rule -a Code                           desktop=^5 state=fullscreen
+bspc rule -a code-oss                       desktop=^5 state=fullscreen
 bspc rule -a Mailspring                     desktop=^7 state=tiled
 bspc rule -a TelegramDesktop                desktop=^7 state=tiled
 bspc rule -a Conky                          sticky=on manage=off lower=on
+bspc rule -a Xfce4-terminal                 state=floating border=off
 bspc rule -a latte-dock                     sticky=on manage=off
+# xprop WM_CLASS and WM_NAME
+# bspc rule -a 'Toolkit:firefox-nightly:Picture-in-Picture' sticky=on manage=off lower=on
+bspc rule -a '*:*:Picture-in-Picture' sticky=on manage=off lower=on
 
 bspc desktop ^7 -l monocle
 
