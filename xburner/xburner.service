@@ -1,0 +1,18 @@
+[Unit]
+Description=xburner
+
+[Service]
+Type=simple
+KillMode=process
+WorkingDirectory=/home/kumiko
+ExecStart=/usr/bin/XBurner run --config /home/kumiko/.config/xburner/config.yml --device /dev/input/by-id/usb-Topre_Corporation_HHKB_Professional-event-kbd
+ExecStop=/bin/bash -c 'pkill -f XBurner && exit 0'
+Restart=on-failure
+RestartSec=3
+Environment=DISPLAY=:0
+Environment=RUST_BACKTRACE=1
+
+[Install]
+# WantedBy=graphical.target
+WantedBy=default.target
+#
