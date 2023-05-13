@@ -4,7 +4,6 @@
 #         without any warranty.
 #         Copyright 2012— Gregory Pakosz (@gpakosz).
 
-
 # -- navigation ----------------------------------------------------------------
 
 # if you're running tmux within iTerm2
@@ -13,7 +12,6 @@
 #   - and iTerm2 is configured to send [1;9A -> [1;9D for option + arrow keys
 # then uncomment the following line to make Meta + arrow keys mapping work
 #set -ga terminal-overrides "*:kUP3=\e[1;9A,*:kDN3=\e[1;9B,*:kRIT3=\e[1;9C,*:kLFT3=\e[1;9D"
-
 
 # -- windows & pane creation ---------------------------------------------------
 
@@ -36,7 +34,6 @@ tmux_conf_new_pane_reconnect_ssh=false
 #   - true
 #   - false (default)
 tmux_conf_new_session_prompt=false
-
 
 # -- display -------------------------------------------------------------------
 
@@ -66,6 +63,9 @@ tmux_conf_theme_colour_17="#e4e4e4"   # white
 tmux_conf_theme_colour_18="#bc64a4"
 tmux_conf_theme_colour_19="#f19072"
 
+tmux_conf_theme_colour_20="#822d57"
+tmux_conf_theme_colour_21="#bb6475"
+tmux_conf_theme_colour_22="#f0a28e"
 
 # default theme (ansi)
 #tmux_conf_theme_colour_1="colour0"
@@ -102,6 +102,9 @@ tmux_conf_theme_focused_pane_bg="#282a36"
 #   - thin (default)
 #   - fat
 tmux_conf_theme_pane_border_style=thin
+set -g pane-border-format ""
+set -g pane-border-lines "heavy"
+set -g pane-border-status "bottom"
 
 # pane borders colours:
 tmux_conf_theme_pane_border="$tmux_conf_theme_colour_2"
@@ -128,7 +131,7 @@ tmux_conf_theme_mode_attr="bold"
 
 # status line style
 tmux_conf_theme_status_fg="$tmux_conf_theme_colour_3"
-tmux_conf_theme_status_bg="$tmux_conf_theme_colour_1"
+tmux_conf_theme_status_bg="$tmux_conf_theme_colour_15"
 tmux_conf_theme_status_attr="none"
 
 # terminal title
@@ -153,9 +156,9 @@ tmux_conf_theme_terminal_title="#h ❐ #S ● #I #W"
 #     - #{hostname_full_ssh}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_window_status_fg="$tmux_conf_theme_colour_3"
-tmux_conf_theme_window_status_bg="$tmux_conf_theme_colour_1"
-tmux_conf_theme_window_status_attr="none"
+tmux_conf_theme_window_status_fg="$tmux_conf_theme_colour_4"
+tmux_conf_theme_window_status_bg="$tmux_conf_theme_colour_15"
+tmux_conf_theme_window_status_attr="bold"
 tmux_conf_theme_window_status_format=" #I #W "
 #tmux_conf_theme_window_status_format="#{circled_window_index} #W"
 #tmux_conf_theme_window_status_format="#I #W#{?window_bell_flag,🔔,}#{?window_zoomed_flag,🔍,}"
@@ -178,9 +181,9 @@ tmux_conf_theme_window_status_current_format=" 🔍 #I #W "
 #tmux_conf_theme_window_status_current_format="#I #W#{?window_zoomed_flag,🔍,}"
 
 # window activity status style
-tmux_conf_theme_window_status_activity_fg="default"
-tmux_conf_theme_window_status_activity_bg="default"
-tmux_conf_theme_window_status_activity_attr="underscore"
+tmux_conf_theme_window_status_activity_fg="$tmux_conf_theme_colour_4"
+tmux_conf_theme_window_status_activity_bg="$tmux_conf_theme_colour_15"
+tmux_conf_theme_window_status_activity_attr="bold"
 
 # window bell status style
 tmux_conf_theme_window_status_bell_fg="$tmux_conf_theme_colour_5"
@@ -189,18 +192,18 @@ tmux_conf_theme_window_status_bell_attr="blink,bold"
 
 # window last status style
 tmux_conf_theme_window_status_last_fg="$tmux_conf_theme_colour_4"
-tmux_conf_theme_window_status_last_bg="$tmux_conf_theme_colour_2"
-tmux_conf_theme_window_status_last_attr="none"
+tmux_conf_theme_window_status_last_bg="$tmux_conf_theme_colour_15"
+tmux_conf_theme_window_status_last_attr="bold"
 
 # status left/right sections separators
 tmux_conf_theme_left_separator_main=""
 tmux_conf_theme_left_separator_sub="|"
 tmux_conf_theme_right_separator_main=""
 tmux_conf_theme_right_separator_sub="|"
-#tmux_conf_theme_left_separator_main="\uE0B0"  # /!\ you don't need to install Powerline
-#tmux_conf_theme_left_separator_sub="\uE0B1"   #   you only need fonts patched with
-#tmux_conf_theme_right_separator_main="\uE0B2" #   Powerline symbols or the standalone
-#tmux_conf_theme_right_separator_sub="\uE0B3"  #   PowerlineSymbols.otf font, see README.md
+# tmux_conf_theme_left_separator_main="\uE0B0"  # /!\ you don't need to install Powerline
+# tmux_conf_theme_left_separator_sub="\uE0B1"   #   you only need fonts patched with
+# tmux_conf_theme_right_separator_main="\uE0B2" #   Powerline symbols or the standalone
+# tmux_conf_theme_right_separator_sub="\uE0B3"  #   PowerlineSymbols.otf font, see README.md
 
 # status left/right content:
 #   - separate main sections with "|"
@@ -229,16 +232,16 @@ tmux_conf_theme_right_separator_sub="|"
 #     - #{uptime_s}
 #     - #{username}
 #     - #{username_ssh}
-tmux_conf_theme_status_left=" 💻load avg: #{loadavg} "
+# tmux_conf_theme_status_left=" 💻load avg: #{loadavg} "
+tmux_conf_theme_status_left=" ❐ #S | 💻load avg: #{loadavg} | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
 tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} | ⏰ %H:%M:%S %Y-%m-%d "
 set-option -g status-justify centre
 set -g status-interval 2
 
-
 # status left style
-tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6"
-tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_18"
-tmux_conf_theme_status_left_attr="bold"
+tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_17,$tmux_conf_theme_colour_17,$tmux_conf_theme_colour_1"
+tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_20,$tmux_conf_theme_colour_21,$tmux_conf_theme_colour_22"
+tmux_conf_theme_status_left_attr="none,none,none"
 
 # status right style
 tmux_conf_theme_status_right_fg="$tmux_conf_theme_colour_12,$tmux_conf_theme_colour_19"
@@ -276,10 +279,10 @@ tmux_conf_theme_synchronized_bg="none"
 tmux_conf_theme_synchronized_attr="none"
 
 # battery bar symbols
-tmux_conf_battery_bar_symbol_full="◼"
-tmux_conf_battery_bar_symbol_empty="◻"
+tmux_conf_battery_bar_symbol_full="■"
+tmux_conf_battery_bar_symbol_empty="□"
 #tmux_conf_battery_bar_symbol_full="♥"
-#tmux_conf_battery_bar_symbol_empty="·"
+jtmux_conf_battery_bar_symbol_empty="·"
 
 # battery bar length (in number of symbols), possible values are:
 #   - auto
@@ -308,16 +311,15 @@ tmux_conf_battery_vbar_palette="gradient"
 #tmux_conf_battery_vbar_palette="#d70000,#ff5f00,#5fff00"  # red, orange, green
 
 # symbols used to indicate whether battery is charging or discharging
-tmux_conf_battery_status_charging="↑"       # U+2191
-tmux_conf_battery_status_discharging="↓"    # U+2193
-#tmux_conf_battery_status_charging="🔌"     # U+1F50C
-#tmux_conf_battery_status_discharging="🔋"  # U+1F50B
+# tmux_conf_battery_status_charging="↑"       # U+2191
+# tmux_conf_battery_status_discharging="↓"    # U+2193
+tmux_conf_battery_status_charging="⚡"     # U+1F50C
+tmux_conf_battery_status_discharging="🔋"  # U+1F50B
 
 # clock style (when you hit <prefix> + t)
 # you may want to use %I:%M %p in place of %R in tmux_conf_theme_status_right
 tmux_conf_theme_clock_colour="$tmux_conf_theme_colour_4"
 tmux_conf_theme_clock_style="24"
-
 
 # -- clipboard -----------------------------------------------------------------
 
@@ -327,7 +329,7 @@ tmux_conf_theme_clock_style="24"
 # on macOS, this requires installing reattach-to-user-namespace, see README.md
 # on Linux, this requires xsel or xclip
 tmux_conf_copy_to_os_clipboard=false
-
+set -g allow-passthrough on
 
 # -- user customizations -------------------------------------------------------
 # this is the place to override or undo settings
@@ -349,7 +351,9 @@ unbind C-a
 unbind C-b
 set -g prefix C-']'
 bind C-']' send-prefix
-set -g default-terminal "xterm-256color"
+set -g default-terminal "tmux-256color"
+set-option -ga terminal-overrides ",*256col*:Tc"
+set -g repeat-time 250
 
 # move status line to top
 #set -g status-position top
@@ -367,6 +371,10 @@ set -g default-terminal "xterm-256color"
 #   - true (default)
 #   - false
 tmux_conf_update_plugins_on_launch=false
+bind-key -T copy-mode-vi C-c send-keys -X copy-pipe-and-cancel 'xclip -select clipboard'
+
+bind-key ! break-pane -d -n _hidden_pane
+bind-key @ join-pane -s $.1
 
 # by default, reloading the configuration will update tpm and all plugins
 #   - true (default)
@@ -386,13 +394,42 @@ tmux_conf_update_plugins_on_reload=true
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @plugin 'tmux-plugins/tmux-fpp'
+set -g @plugin 'Hanaasagi/tmux-open'
+set -g @plugin 'fcsonline/tmux-thumbs'
+set -g @thumbs-hint-fg-color red
+set -g @thumbs-hint-bg-color black
+set -g @thumbs-bg-color black
+set -g @thumbs-fg-color blue
+set -g @plugin 'tmux-plugins/tmux-sidebar'
+
 # set -g @plugin 'dracula/tmux'
+
+set -g @open-open-translator-args '-show-original n --show-translation-phonetics n -show-original-phonetics n -show-original n -show-languages n -show-alternatives n -t zh'
+set -g @thumbs-command 'echo -n {} | xclip -sel clip'
 
 set -g @resurrect-capture-pane-contents 'on'
 set -g @continuum-restore 'on'
 set -g @continuum-save-interval '10'
 
+#bind -n C-b {
+#    copy-mode
+#    send -X clear-selection
+#    send -X start-of-line
+#    send -X start-of-line
+#    send -X cursor-up
+#    send -X cursor-up
+#    send -X cursor-up
+#    send -X end-of-line
+#    send -X end-of-line
+#    send -X begin-selection
+    #send -X search-backward-text $(echo -e "❯\u200b")
+#    send -X search-backward-text "❯\u200b"
+#    send -X end-of-line
+#    send -X end-of-line
+#    send -X cursor-right
+#    send -X stop-selection
 
+#}
 
 # -- custom variables ----------------------------------------------------------
 
@@ -418,4 +455,3 @@ set -g @continuum-save-interval '10'
 #
 # "$@"
 # # /!\ do not remove the previous line
-
